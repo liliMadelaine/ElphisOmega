@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    //managing health of Player
-    public float maxHealth = 100;
-    public float currHealth = 0;
+    public int maxHealth = 100;
+    public int currHealth;
 
     public HealthBar healthBar;
 
@@ -25,8 +24,8 @@ public class PlayerController : MonoBehaviour
         col = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         spriteRender = GetComponent<SpriteRenderer>();
-        //healthBar = GetComponent<HealthBar>(); // Todo: right this way?
     }
+    
     private void OnEnable()
     {
         playerActionControls.Enable();
@@ -41,7 +40,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         currHealth = maxHealth;
-        //healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetMaxHealth(maxHealth);
         
         //DontDestroyOnLoad(gameObject);
         playerActionControls.Land.Jump.performed += _ => Jump(); 
@@ -72,42 +71,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(isAlive()) //Todo i can still run when dying
+        if(isAlive())
         { 
              Move();
         }
-
-        
-        if(gameObject.tag == "EnemyCloud")
-        //if(Input.GetKeyDown(KeyCode.X))
-        {
-            TakeDamage(10);
-        }
-/*
-        if(gameObject.tag == "Heart")
-        {
-            GainLife(10);
-        }
-*/
     }
-
-    private void TakeDamage(float damage)
-    {
-        /*currHealth -= damage;
-
-        healthBar.setHealth(currHealth);*/
-
-        currHealth -= damage;
-    }
-/*
-    private void GainLife(int plus)
-    {
-        currHealth += plus;
-
-        healthBar.setHealth(currHealth);
-    }
- */   
 
     private void Move ()
     {
@@ -136,34 +104,45 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void TakeDamage(int damage)
+    {   
+        currHealth -= damage;
+        healthBar.setHealth(currHealth);
+    }
+    
+    private void Heal(int amount)
+    {
+        currHealth += amount;
+        healthBar.setHealth(currHealth);
+    } 
+
     private IEnumerator OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Enemy")
+        if(other.gameObject.tag == "Enemy" || currHealth <= 0)
         {
             animator.SetBool("Shutdown", true);
 
             yield return new WaitForSeconds(2f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        
-    }
 
-/*
-    private void OnCollisionEnter(Collision2D other){
-        if(other.gameObject.tag == "EnemyCloud") {
+        if(other.gameObject.tag == "EnemyCloud")
+        {
             TakeDamage(10);
         }
+
+        if(other.gameObject.tag == "Heart"){
+            Heal(10);
+            Destroy(other.gameObject);
+        }
     }
-*/
 
     private bool isAlive()
     {
-        if(animator.Equals("Shutdown") )
+        if(animator.GetBool("Shutdown") || currHealth <= 0)
         {
             return false;
         }
         return true;
     }
-    
-
 }
