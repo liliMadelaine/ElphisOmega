@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2446518806558530482}
   - component: {fileID: 2446518806558530483}
   - component: {fileID: 2446518806558530484}
-  - component: {fileID: 2446518806558530485}
+  - component: {fileID: 8840540117380454635}
   m_Layer: 0
   m_Name: Virus
   m_TagString: Enemy
@@ -104,8 +104,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &2446518806558530485
-BoxCollider2D:
+--- !u!58 &8840540117380454635
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,15 +118,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.03125, y: 7.03125}
-    newSize: {x: 7.03125, y: 7.03125}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.03125, y: 7.03125}
-  m_EdgeRadius: 0
+  m_Radius: 3.5156248
