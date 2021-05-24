@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    //managing health of Player
+    public int maxHealth = 100;
+    public int currHealth = 0;
+
+    public HealthBar healthBar;
+
     [SerializeField] private float speed, jumpSpeed;
     [SerializeField] private LayerMask ground;
     private PlayerActionControls playerActionControls;
@@ -19,31 +25,39 @@ public class PlayerController : MonoBehaviour
         col = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         spriteRender = GetComponent<SpriteRenderer>();
+        //healthBar = GetComponent<HealthBar>(); // Todo: right this way?
     }
-
-    private void OnEnable(){
+    private void OnEnable()
+    {
         playerActionControls.Enable();
     }
 
-    private void OnDisable(){
+    private void OnDisable()
+    {
         playerActionControls.Disable();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        currHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+        
         //DontDestroyOnLoad(gameObject);
         playerActionControls.Land.Jump.performed += _ => Jump(); 
     }
 
-    private void Jump(){
-        if(IsGrounded()) {
+    private void Jump()
+    {
+        if(IsGrounded())
+        {
             rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
             animator.SetTrigger("Jump");
         }
     }
 
-    private bool IsGrounded() {
+    private bool IsGrounded()
+    {
         Vector2 topLeftPoint = transform.position;
         topLeftPoint.x -= col.bounds.extents.x;
         topLeftPoint.y += col.bounds.extents.y;
@@ -58,13 +72,43 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isAlive()){ //Todo i can still run when dying
-            Move(); 
+        
+        if(isAlive()) //Todo i can still run when dying
+        { 
+             Move();
         }
-      
+
+        
+        if(gameObject.tag == "EnemyCloud")
+        //if(Input.GetKeyDown(KeyCode.X))
+        {
+            TakeDamage(10);
+        }
+/*
+        if(gameObject.tag == "Heart")
+        {
+            GainLife(10);
+        }
+*/
     }
 
-    private void Move () {
+    private void TakeDamage(int damage)
+    {
+        currHealth -= damage;
+
+        healthBar.setHealth(currHealth);
+    }
+/*
+    private void GainLife(int plus)
+    {
+        currHealth += plus;
+
+        healthBar.setHealth(currHealth);
+    }
+ */   
+
+    private void Move ()
+    {
         // Read the movement value
         float movementInput = playerActionControls.Land.Move.ReadValue<float>();
 
@@ -81,15 +125,19 @@ public class PlayerController : MonoBehaviour
         }
 
         //Sprite flip
-        if(movementInput == -1) {
+        if(movementInput == -1)
+        {
             spriteRender.flipX = true;
-        } else if (movementInput == 1) {
+        } else if (movementInput == 1)
+        {
             spriteRender.flipX = false;
         }
     }
 
-    private IEnumerator OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "Enemy") {
+    private IEnumerator OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
             animator.SetBool("Shutdown", true);
 
             yield return new WaitForSeconds(2f);
@@ -98,11 +146,22 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private bool isAlive() {
-        if(animator.Equals("Shutdown") ){
+/*
+    private void OnCollisionEnter(Collision2D other){
+        if(other.gameObject.tag == "EnemyCloud") {
+            TakeDamage(10);
+        }
+    }
+*/
+
+    private bool isAlive()
+    {
+        if(animator.Equals("Shutdown") )
+        {
             return false;
         }
         return true;
     }
+    
 
 }

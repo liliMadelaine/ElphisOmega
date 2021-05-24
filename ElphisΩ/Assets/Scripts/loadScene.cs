@@ -17,25 +17,4 @@ public class loadScene : MonoBehaviour
         
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision) {
-
-        GameObject collissionGameObject = collision.gameObject;
-
-        if(collision.tag == "Player"){
-           LoadScene(); 
-        }
-
-        
-    }
-
-    void LoadScene(){
-        if(useIntToLoadLvl){
-            SceneManager.LoadScene(indexLvlToLoad);
-        } else {
-            SceneManager.LoadScene(nameLvlToLoad);
-        }
-        
-    }
-    */
-
 }
