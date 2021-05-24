@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     //managing health of Player
-    public int maxHealth = 100;
-    public int currHealth = 0;
+    public float maxHealth = 100;
+    public float currHealth = 0;
 
     public HealthBar healthBar;
 
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         currHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        //healthBar.SetMaxHealth(maxHealth);
         
         //DontDestroyOnLoad(gameObject);
         playerActionControls.Land.Jump.performed += _ => Jump(); 
@@ -92,11 +92,13 @@ public class PlayerController : MonoBehaviour
 */
     }
 
-    private void TakeDamage(int damage)
+    private void TakeDamage(float damage)
     {
-        currHealth -= damage;
+        /*currHealth -= damage;
 
-        healthBar.setHealth(currHealth);
+        healthBar.setHealth(currHealth);*/
+
+        currHealth -= damage;
     }
 /*
     private void GainLife(int plus)
