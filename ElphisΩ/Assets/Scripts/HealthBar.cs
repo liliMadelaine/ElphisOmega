@@ -7,7 +7,6 @@ public class HealthBar : MonoBehaviour
 
 {
     public Image healthbarImage;
-
     public PlayerController player;
     public Slider slider;
 
@@ -21,13 +20,5 @@ public class HealthBar : MonoBehaviour
     {
         slider.value = health;
     }
-
-/*
-    public void UpdateHealthBar()
-    {
-        healthbarImage.fillAmount = Mathf.Clamp(player.currHealth / player.maxHealth, 0, 1f);
-        //healthbarImage.fillAmount = Mathf.Clamp(player.currHealth, 0, 1f);
-    }
-    */
 
 }
