@@ -7148,7 +7148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currHealth: 0
   healthBar: {fileID: 540825029}
   speed: 4
   jumpSpeed: 5

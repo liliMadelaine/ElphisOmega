@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public int maxHealth = 100;
-    public int currHealth;
+    int currHealth;
 
     public HealthBar healthBar;
 
@@ -29,18 +29,30 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         playerActionControls.Enable();
+
+        //set starting health value = maxHealth
+        if(SceneManager.GetActiveScene().buildIndex == 1){
+            PlayerPrefs.SetInt("score", maxHealth);
+        }
+
+         //get current health value
+        currHealth  =  PlayerPrefs.GetInt("score");
     }
 
     private void OnDisable()
     {
         playerActionControls.Disable();
+
+        //save health value
+        PlayerPrefs.SetInt("score", currHealth);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        currHealth = maxHealth;
+        //currHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        healthBar.setHealth(currHealth);
         
         //DontDestroyOnLoad(gameObject);
         playerActionControls.Land.Jump.performed += _ => Jump(); 
