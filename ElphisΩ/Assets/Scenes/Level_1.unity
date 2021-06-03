@@ -6955,7 +6955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658dcd516ac42d14c86252340c9196f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexLvlToLoad: 2
+  indexLvlToLoad: 3
   nameLvlToLoad: Level_2
   useIntToLoadLvl: 0
 --- !u!61 &2002818622

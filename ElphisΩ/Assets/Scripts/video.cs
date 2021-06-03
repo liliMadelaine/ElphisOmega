@@ -16,14 +16,6 @@ public class video : MonoBehaviour
         videoPlayer.loopPointReached += LoadScene;
     }
 
-    //IEnumerator WaitForIntroVideo(){
-
-        //yield return new WaitForSeconds(wait_for);
-
-        //jump to next scene
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
-    //}
-
     void LoadScene(VideoPlayer vp){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
     }

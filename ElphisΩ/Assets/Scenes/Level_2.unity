@@ -1539,7 +1539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658dcd516ac42d14c86252340c9196f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexLvlToLoad: 3
+  indexLvlToLoad: 4
   nameLvlToLoad: Level_3
   useIntToLoadLvl: 0
 --- !u!61 &229122942
@@ -6612,7 +6612,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currHealth: 0
   healthBar: {fileID: 2132271527}
   speed: 4
   jumpSpeed: 5
