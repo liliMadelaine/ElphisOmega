@@ -53,4 +53,8 @@ public class PauseMenu_Video : MonoBehaviour
         Debug.Log("Game");
         Application.Quit();
     }
+
+    public void SkipScene(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+    }
 }

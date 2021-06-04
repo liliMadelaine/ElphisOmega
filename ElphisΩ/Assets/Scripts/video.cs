@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class video : MonoBehaviour
 {
-    //public float wait_for;
+    public string nextLevel;
     public VideoPlayer videoPlayer;
 
     // Start is called before the first frame update
@@ -17,6 +17,6 @@ public class video : MonoBehaviour
     }
 
     void LoadScene(VideoPlayer vp){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+        SceneManager.LoadScene(nextLevel);
     }
 }

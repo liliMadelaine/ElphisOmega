@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         playerActionControls.Enable();
 
         //set starting health value = maxHealth
-        if(SceneManager.GetActiveScene().buildIndex == 1){
+        if(SceneManager.GetActiveScene().buildIndex == 2){
             PlayerPrefs.SetInt("score", maxHealth);
         }
 
