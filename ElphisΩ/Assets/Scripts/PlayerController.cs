@@ -140,7 +140,12 @@ public class PlayerController : MonoBehaviour
 
         if(other.gameObject.tag == "EnemyCloud")
         {
-            TakeDamage(10);
+            TakeDamage(15);
+        }
+
+        if(other.gameObject.tag == "Spike")
+        {
+            TakeDamage(5);
         }
 
         if(other.gameObject.tag == "Heart"){
