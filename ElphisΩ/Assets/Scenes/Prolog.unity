@@ -1360,8 +1360,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -372.4, y: 191}
-  m_SizeDelta: {x: 39.6756, y: 39.6756}
+  m_AnchoredPosition: {x: -371.27, y: 189.87}
+  m_SizeDelta: {x: 41.94, y: 41.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1360985869
 GameObject:
@@ -1571,6 +1571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1382290615}
   - component: {fileID: 1382290616}
+  - component: {fileID: 1382290617}
   m_Layer: 0
   m_Name: Prolog
   m_TagString: Untagged
@@ -1600,7 +1601,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382290614}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: f6a7dfa0e1ca9e544806feedda144adb, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: a0b941e33cd7caa4cb0e26be2a72d252, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1366762932}
@@ -1627,6 +1628,19 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!114 &1382290617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382290614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b5f8a9714c9e74996fc5d07fec11ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 1382290616}
 --- !u!1 &1986126427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,8 +1831,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -311.24927, y: 191}
-  m_SizeDelta: {x: 39.6756, y: 39.6756}
+  m_AnchoredPosition: {x: -306.63, y: 189.87}
+  m_SizeDelta: {x: 41.94, y: 41.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1990025673
 Animator:
