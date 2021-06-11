@@ -62,6 +62,7 @@ public class SettingsMenu : MonoBehaviour
     }
 
     public void SetVolume(float volume) {
+        PlayerPrefs.SetFloat("VideoVolume", volume);
         audioMixer.SetFloat("volume", volume);
     }
 

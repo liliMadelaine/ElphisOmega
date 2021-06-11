@@ -8,6 +8,7 @@ TagManager:
   - Heart
   - EnemyCloud
   - Spike
+  - Tornado
   layers:
   - Default
   - TransparentFX

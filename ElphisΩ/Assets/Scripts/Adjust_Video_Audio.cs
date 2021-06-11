@@ -13,13 +13,8 @@ public class Adjust_Video_Audio : MonoBehaviour
     {
         //calculating volume
         float volume = PlayerPrefs.GetFloat("VideoVolume");
-        if(volume < 0){
-            volume = volume+20;
-            volume = volume/40;
-        } else {
             volume = volume + 20;
             volume = volume/40;
-        }
 
         videoPlayer.SetDirectAudioVolume(0, volume);
     }
