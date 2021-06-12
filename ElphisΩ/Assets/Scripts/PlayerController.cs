@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public HealthBar healthBar;
 
     [SerializeField] private float speed, jumpSpeed;
+    private bool currKnockedBack = false;
     [SerializeField] private LayerMask ground;
     private PlayerActionControls playerActionControls;
     private Rigidbody2D rb;
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isAlive())
+        if(isAlive() && !currKnockedBack)
         { 
              Move();
         }
@@ -150,8 +151,12 @@ public class PlayerController : MonoBehaviour
 
         if(other.gameObject.tag == "Tornado")
         {
+            currKnockedBack = true;
+            animator.SetTrigger("KnockBack");
             TakeDamage(10);
-        }
+            yield return new WaitForSeconds(1.3f);
+            currKnockedBack = false;
+        } 
 
         if(other.gameObject.tag == "Heart")
         {
