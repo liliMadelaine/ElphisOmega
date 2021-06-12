@@ -7,11 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     public int maxHealth = 100;
     int currHealth;
-
     public HealthBar healthBar;
 
     [SerializeField] private float speed, jumpSpeed;
     private bool currKnockedBack = false;
+    private bool isDead = false;
     [SerializeField] private LayerMask ground;
     private PlayerActionControls playerActionControls;
     private Rigidbody2D rb;
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
             PlayerPrefs.SetInt("score", maxHealth);
         }
 
-         //get current health value
+        //get current health value
         currHealth  =  PlayerPrefs.GetInt("score");
     }
 
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
         healthBar.setHealth(currHealth);
         
         //DontDestroyOnLoad(gameObject);
-        playerActionControls.Land.Jump.performed += _ => Jump(); 
+        playerActionControls.Land.Jump.performed += _ => Jump();
     }
 
     private void Jump()
@@ -84,9 +84,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isAlive() && !currKnockedBack)
+        if(!isDead && !currKnockedBack)
         { 
-             Move();
+            Move();
         }
     }
 
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         if(movementInput != 0) {
             animator.SetBool("Run", true);
         } else {
-            animator.SetBool("Run", false);
+             animator.SetBool("Run", false);
         }
 
         //Sprite flip
@@ -131,17 +131,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Enemy" || currHealth <= 0)
-        {
-            animator.SetBool("Shutdown", true);
-
-            yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
         if(other.gameObject.tag == "EnemyCloud")
         {
-            TakeDamage(15);
+            TakeDamage(20);
         }
 
         if(other.gameObject.tag == "Spike")
@@ -153,25 +145,25 @@ public class PlayerController : MonoBehaviour
         {
             currKnockedBack = true;
             animator.SetTrigger("KnockBack");
-            TakeDamage(10);
+            TakeDamage(5);
             yield return new WaitForSeconds(1.3f);
             currKnockedBack = false;
         } 
+
+        if(other.gameObject.tag == "Enemy" || currHealth <= 0)
+        {
+            healthBar.setHealth(0);
+            animator.SetTrigger("ShutDown");
+            isDead = true;
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 
         if(other.gameObject.tag == "Heart")
         {
             Heal(10);
             Destroy(other.gameObject);
         }
-        
     }
 
-    private bool isAlive()
-    {
-        if(animator.GetBool("Shutdown") || currHealth <= 0)
-        {
-            return false;
-        }
-        return true;
-    }
 }
