@@ -124,8 +124,11 @@ public class PlayerController : MonoBehaviour
     }
     
     private void Heal(int amount)
-    {
+    {   
         currHealth += amount;
+        if(currHealth > maxHealth) {
+            currHealth = 100;
+        }
         healthBar.setHealth(currHealth);
     } 
 
@@ -133,7 +136,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.tag == "EnemyCloud")
         {
-            TakeDamage(20);
+            TakeDamage(15);
         }
 
         if(other.gameObject.tag == "Spike")
@@ -145,7 +148,7 @@ public class PlayerController : MonoBehaviour
         {
             currKnockedBack = true;
             animator.SetTrigger("KnockBack");
-            TakeDamage(5);
+            TakeDamage(10);
             yield return new WaitForSeconds(1.3f);
             currKnockedBack = false;
         } 
