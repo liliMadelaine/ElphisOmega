@@ -148,10 +148,17 @@ public class PlayerController : MonoBehaviour
             TakeDamage(5);
         }
 
-        if(other.gameObject.tag == "Heart"){
+        if(other.gameObject.tag == "Tornado")
+        {
+            TakeDamage(10);
+        }
+
+        if(other.gameObject.tag == "Heart")
+        {
             Heal(10);
             Destroy(other.gameObject);
         }
+        
     }
 
     private bool isAlive()
