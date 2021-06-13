@@ -95,6 +95,11 @@ public class PlayerController : MonoBehaviour
         // Read the movement value
         float movementInput = playerActionControls.Land.Move.ReadValue<float>();
 
+        // Sound effect
+        if(movementInput == 0) {
+            FindObjectOfType<AudioManager>().Play("accelerate_elphis");
+        }
+
         // Move the player
         Vector3 currPos = transform.position;
         currPos.x += movementInput * speed * Time.deltaTime;
