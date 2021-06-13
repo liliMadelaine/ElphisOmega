@@ -11,14 +11,9 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
 
-            float volume = (PlayerPrefs.GetFloat("VideoVolume") + 20)/ 40;
-            s.source.volume = volume;
+            //float volume = (PlayerPrefs.GetFloat("VideoVolume") + 20)/ 40;
+            s.source.volume = 1f;
             s.source.loop = s.loop;
-
-            /*
-            to call within the code at desired point LATER
-            FindObjectOfType<AudioManager>().Play("PlayerDeath");
-            */
         }
     }
 
