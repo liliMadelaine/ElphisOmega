@@ -5,11 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class loadScene : MonoBehaviour
 {
-    public int indexLvlToLoad;
-    public string nameLvlToLoad;
+    public int nextLvl;
 
-    public bool useIntToLoadLvl;
-    
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
 
@@ -20,7 +17,7 @@ public class loadScene : MonoBehaviour
             }
             
 
-           SceneManager.LoadScene(indexLvlToLoad); 
+           SceneManager.LoadScene(nextLvl); 
         }
         
     }
