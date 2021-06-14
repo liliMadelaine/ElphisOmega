@@ -35,17 +35,16 @@ public class PlayerController : MonoBehaviour
         if(SceneManager.GetActiveScene().buildIndex == 2){
             PlayerPrefs.SetInt("score", maxHealth);
         }
-
+        
         //get current health value
         currHealth  =  PlayerPrefs.GetInt("score");
+
     }
 
     private void OnDisable()
     {
         playerActionControls.Disable();
 
-        //save health value
-        PlayerPrefs.SetInt("score", currHealth);
     }
 
     // Start is called before the first frame update
@@ -160,6 +159,7 @@ public class PlayerController : MonoBehaviour
         {
             healthBar.setHealth(0);
             animator.SetTrigger("ShutDown");
+
             isDead = true;
             yield return new WaitForSeconds(2f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
