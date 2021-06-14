@@ -1207,9 +1207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658dcd516ac42d14c86252340c9196f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexLvlToLoad: 5
-  nameLvlToLoad: IntermediateScene
-  useIntToLoadLvl: 0
+  nextLvl: 3
 --- !u!61 &180834803
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1639,7 +1637,7 @@ GameObject:
   - component: {fileID: 335829657}
   - component: {fileID: 335829658}
   m_Layer: 0
-  m_Name: Desertbackground
+  m_Name: DesertBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
