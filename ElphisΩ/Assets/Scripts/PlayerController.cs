@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public int maxHealth = 100;
-    int currHealth;
+    public int currHealth;
     public HealthBar healthBar;
 
     [SerializeField] private float speed, jumpSpeed;
@@ -51,11 +51,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //currHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         healthBar.setHealth(currHealth);
         
-        //DontDestroyOnLoad(gameObject);
         playerActionControls.Land.Jump.performed += _ => Jump();
     }
 
