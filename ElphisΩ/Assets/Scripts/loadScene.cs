@@ -5,14 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class loadScene : MonoBehaviour
 {
-    public int indexLvlToLoad;
-    public string nameLvlToLoad;
-
-    public bool useIntToLoadLvl;
+    public int nextLvl;
+    //public string nameLvlToLoad;
     
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
-           SceneManager.LoadScene(indexLvlToLoad); 
+           SceneManager.LoadScene(nextLvl); 
         }
         
     }
