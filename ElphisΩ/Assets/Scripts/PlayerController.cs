@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
         
         //get current health value
         currHealth  =  PlayerPrefs.GetInt("score");
-
     }
 
     private void OnDisable()
@@ -47,7 +46,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         healthBar.SetMaxHealth(maxHealth);
@@ -78,7 +76,6 @@ public class PlayerController : MonoBehaviour
         return Physics2D.OverlapArea(topLeftPoint, bottomRightPoint, ground);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!isDead && !currKnockedBack)

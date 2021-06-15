@@ -9,14 +9,12 @@ public class Knockback : MonoBehaviour
 
     Vector3 lastVelocity;
 
-    // Start is called before the first frame update
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
        
     }
 
-    // Update is called once per frame
     void Update()
     {
         lastVelocity = rb.velocity;

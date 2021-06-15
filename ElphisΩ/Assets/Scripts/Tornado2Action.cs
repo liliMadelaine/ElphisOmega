@@ -10,11 +10,9 @@ public class Tornado2Action : MonoBehaviour
     {
         startPos = transform.position;
     }
-
     
     void Update()
     {
-        //transform.position = startPos + amplitude*new Vector3(0f, Mathf.Sin(Time.time), 0f);
         transform.position = startPos + amplitude*new Vector3(Mathf.Sin(Time.time), 0f, 0f);
     }
 }

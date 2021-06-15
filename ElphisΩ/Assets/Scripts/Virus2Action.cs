@@ -10,7 +10,6 @@ public class Virus2Action : MonoBehaviour
     {
         startPos = transform.position;
     }
-
     
     void Update()
     {
