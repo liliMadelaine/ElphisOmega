@@ -2664,7 +2664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - title: accelerate_elphis
-    clip: {fileID: 8300000, guid: 2f83db626a2a49c48b3d35519736216a, type: 3}
+    clip: {fileID: 8300000, guid: 9c8e8b9a6f0ce28439c3b76bd7e6556c, type: 3}
     volume: 0
     loop: 0
     source: {fileID: 0}
